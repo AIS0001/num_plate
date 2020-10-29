@@ -16,7 +16,7 @@ const pool = createPool({
     host:"aisgroup.in",
     user:"aisgr1bu_user1",
     password:"Realforce__123",
-    database:"aisgr1bu_akshat",
+    database:"aisgr1bu_car_rental",
     connectionLimit:10
 
  

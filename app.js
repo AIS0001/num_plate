@@ -13,12 +13,12 @@ app.use(express.urlencoded({extended: false, limit: '1000mb'}));//try now done
 //   };
 
 
-const port = process.env.PORT || 3600; //can you solve this problem
-const deliveryRouter = require("./api/delivery/delivery.router");
-const partyRouter = require("./api/party/party.router");
+const port = process.env.PORT || 5000; //can you solve this problem
+//const deliveryRouter = require("./api/delivery/delivery.router");
+const usersRouter = require("./api/users/users.router");
 const adminRouter = require("./api/admin/admin.router");
-app.use("/api/delivery",deliveryRouter);
-app.use("/api/party",partyRouter);
+//app.use("/api/delivery",deliveryRouter);
+app.use("/api/users",usersRouter);
 app.use("/api/admin",adminRouter);
 //app.use(bodyParser.json({limit: '10mb', extended: true}));
 //you can do it with express so you didnt need to use body parser ok?

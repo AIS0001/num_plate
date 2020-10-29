@@ -1,17 +1,27 @@
 const pool = require("../../config/database");
 
 module.exports = {
-    create:(data,callback)=>{
+    insert_user:(data,callback)=>{
+        var low =2;
+       // var userid = Math.floor(Math.random() * 100000) ;
+        
         pool.query(
-            `INSERT INTO party (comp_name, cust_name, address, contact, city, pincode)
-             VALUES (?, ?, ?, ?, ?, ?);`,
+            `INSERT INTO users (created,userid, password, fname, lname, contact,email, address, city, landmark, pincode, type, flag)
+             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);`,
         [
-            data.comp_name,
-            data.cust_name,
-            data.address,
+            data.created,
+            data.userid,
+            data.password,
+            data.fname,
+            data.lname,
             data.contact,
+            data.email,
+            data.address,
             data.city,
-            data.pincode
+            data.landmark,
+            data.pincode,
+            data.type,
+            data.flag
         ],
         (error,results,fields)=>{
             if(error)
@@ -25,10 +35,8 @@ module.exports = {
     },
 
     getUsers:callback=>{
-        pool.query(`select * from party`,
-        [
-
-        ],
+        pool.query(`select * from users`,
+        [ ],
         (error,results,fields)=>{
             if(error)
             {
