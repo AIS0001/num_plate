@@ -1,5 +1,7 @@
 const { getFittingKit,
         getPlate,
+        CreatePlateType,
+        getPlateTypeList,
         deletePartyRecord,
         CreateVipPlate,
         CreatePlatepricing,
@@ -14,6 +16,8 @@ const { validate } = require("../../validation/form_validation");
 
 router.post("/",createadmin);
 router.post("/insertplateprice",CreatePlatepricing); 
+router.post("/getplatetype",getPlateTypeList); 
+router.post("/platetype",CreatePlateType); 
 router.post("/insertfittingprice",CreateFittingKit); 
 router.post("/insertvipplate",CreateVipPlate); 
 router.post("/getfittingkit",getFittingKit); 

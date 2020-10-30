@@ -82,10 +82,37 @@ insertPlatePricing:(data,callback)=>{
 
     );
 },    
+//Insert Plate Pricinf  Data
+insertPlateType:(data,callback)=>{
+    pool.query(
+        `INSERT INTO plate_type (type) VALUES ( ?);`,
+    [
+        data.type
+    ],
+    (error,results,fields)=>{
+        if(error)
+        {
+            return callback(error);
+        }
+        return callback(null,results);
+    }
 
-
+    );
+},  
  getFittingPrice:(callback)=>{
         pool.query(`SELECT * FROM fitting_kit`,
+        [],
+        (error,results,fields)=>{
+            if(error)
+            {
+              return  callback(error);
+            }
+            return callback(null,results);
+        }
+        );
+    },
+    getPlateType:(callback)=>{
+        pool.query(`SELECT * FROM plate_type`,
         [],
         (error,results,fields)=>{
             if(error)

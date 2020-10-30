@@ -1,6 +1,8 @@
 const { create,
        getPlatePricing,
        getFittingPrice,
+       getPlateType,
+       insertPlateType,
         updateParty,
         insertFittingKit,
         deleteParty,
@@ -115,9 +117,35 @@ CreatePlatepricing:(req,res)=>{
          });
     })
 },
+//Insert Plate Category
+CreatePlateType:(req,res)=>{
+
+    const body =req.body;
+    const salt = genSaltSync(10);
+  // body.password=hashSync(body.password,salt);
+  insertPlateType(body,(err,results)=>{
+        if(err)
+        {
+            console.log(err);
+         //    console.log(body);
+            return res.status(500).json({
+                status:500,
+                success:0,
+                message:"500 Internal Server Error"
+            })
+          
+        }
+        return res.status(200).json({
+            // console.log(pool1Amount);
+            status:200,
+             success:1,
+             status:200
+         });
+    })
+},
       //get All Plate Pricing Name
   getPlate:(req,res)=>{
-        const pname =req.params.partyname;
+        const body =req.body;
         getPlatePricing((err,results)=>{
             if(err)
             {
@@ -137,6 +165,28 @@ CreatePlatepricing:(req,res)=>{
             });
         });
     },
+          //get All Plate Type
+  getPlateTypeList:(req,res)=>{
+   
+    getPlateType((err,results)=>{
+        if(err)
+        {
+            console.log(err);
+            return;
+        }
+        if(!results)
+        {
+            return res.json({
+                success:0,
+                message:"Record not found"
+            });
+        }
+        return res.json({
+            success:1,
+            data:results 
+        });
+    });
+},
     getFittingKit:(req,res)=>{
         const pname =req.params.partyname;
         getFittingPrice((err,results)=>{
