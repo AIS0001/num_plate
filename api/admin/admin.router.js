@@ -10,6 +10,7 @@ const { getFittingKit,
 } = require("./admin.controller");
 const router = require("express").Router();
 const { checkToken } = require("../../auth/token_validation");
+const { validate } = require("../../validation/form_validation");
 
 router.post("/",createadmin);
 router.post("/insertplateprice",CreatePlatepricing); 

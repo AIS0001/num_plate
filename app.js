@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const expressValidator = require('express-validator');
 //const bodyParser = require("body-parser");
 var cors = require('cors');
 
@@ -7,6 +8,7 @@ const app = express();
 app.use(cors());
 app.use(express.json({limit: '1000mb'}));
 app.use(express.urlencoded({extended: false, limit: '1000mb'}));//try now done 
+//app.use(expressValidator());
 // bodyParser = {
 //     json: {limit: '500mb', extended: true},
 //     urlencoded: {limit: '500mb', extended: true}
