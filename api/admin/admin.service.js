@@ -43,11 +43,62 @@ insertVipPlates:(data,callback)=>{
 
     );
 },
-    
+
+//Insert Fitting Kit Data
+insertFittingKit:(data,callback)=>{
+    pool.query(
+        `INSERT INTO fitting_kit (name, price, type) VALUES ( ?, ?, ?);`,
+    [
+        data.name,
+        data.price,
+        data.type
+    ],
+    (error,results,fields)=>{
+        if(error)
+        {
+            return callback(error);
+        }
+        return callback(null,results);
+    }
+
+    );
+},
+//Insert Plate Pricinf  Data
+insertPlatePricing:(data,callback)=>{
+    pool.query(
+        `INSERT INTO plate_pricing (name, price, type) VALUES ( ?, ?, ?);`,
+    [
+        data.name,
+        data.price,
+        data.type
+    ],
+    (error,results,fields)=>{
+        if(error)
+        {
+            return callback(error);
+        }
+        return callback(null,results);
+    }
+
+    );
+},    
 
 
-    getPartyName:(callback)=>{
-        pool.query(`SELECT * FROM party`,
+ getFittingPrice:(callback)=>{
+        pool.query(`SELECT * FROM fitting_kit`,
+        [],
+        (error,results,fields)=>{
+            if(error)
+            {
+              return  callback(error);
+            }
+            return callback(null,results);
+        }
+        );
+    },
+
+    getPlatePricing:(callback)=>{
+        pool.query(`SELECT * FROM plate_pricing`,
         [],
         (error,results,fields)=>{
             if(error)

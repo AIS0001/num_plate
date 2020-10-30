@@ -1,4 +1,13 @@
-const { create,getPartyName,updateParty,deleteDelivery,deleteParty, getUserByuserEmail, insertVipPlates } = require("./admin.service");
+const { create,
+       getPlatePricing,
+       getFittingPrice,
+        updateParty,
+        insertFittingKit,
+        deleteParty,
+        getUserByuserEmail, 
+        insertPlatePricing,
+        insertVipPlates
+     } = require("./admin.service");
 const { genSaltSync,hashSync,compareSync } = require("bcrypt");
 const { sign } = require("jsonwebtoken");
 module.exports ={
@@ -54,10 +63,83 @@ CreateVipPlate:(req,res)=>{
          });
     })
 },
-      //get Party Name
-      getParty:(req,res)=>{
+CreateFittingKit:(req,res)=>{
+
+    const body =req.body;
+    const salt = genSaltSync(10);
+  // body.password=hashSync(body.password,salt);
+   insertFittingKit(body,(err,results)=>{
+        if(err)
+        {
+            console.log(err);
+         //    console.log(body);
+            return res.status(500).json({
+                status:500,
+                success:0,
+                message:"500 Internal Server Error"
+            })
+          
+        }
+        return res.status(200).json({
+            // console.log(pool1Amount);
+            status:200,
+             success:1,
+             status:200
+         });
+    })
+},
+
+//Insert Plate Pricing
+CreatePlatepricing:(req,res)=>{
+
+    const body =req.body;
+    const salt = genSaltSync(10);
+  // body.password=hashSync(body.password,salt);
+  insertPlatePricing(body,(err,results)=>{
+        if(err)
+        {
+            console.log(err);
+         //    console.log(body);
+            return res.status(500).json({
+                status:500,
+                success:0,
+                message:"500 Internal Server Error"
+            })
+          
+        }
+        return res.status(200).json({
+            // console.log(pool1Amount);
+            status:200,
+             success:1,
+             status:200
+         });
+    })
+},
+      //get All Plate Pricing Name
+  getPlate:(req,res)=>{
         const pname =req.params.partyname;
-        getPartyName((err,results)=>{
+        getPlatePricing((err,results)=>{
+            if(err)
+            {
+                console.log(err);
+                return;
+            }
+            if(!results)
+            {
+                return res.json({
+                    success:0,
+                    message:"Record not found"
+                });
+            }
+            return res.json({
+                success:1,
+                data:results 
+            });
+        });
+    },
+    getFittingKit:(req,res)=>{
+        const pname =req.params.partyname;
+        getFittingPrice((err,results)=>{
             if(err)
             {
                 console.log(err);

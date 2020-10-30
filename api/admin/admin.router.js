@@ -1,10 +1,22 @@
-const { updateUserDetails,deletePartyRecord,CreateVipPlate,updateDeliveryDetails,getParty,createadmin,login} = require("./admin.controller");
+const { getFittingKit,
+        getPlate,
+        deletePartyRecord,
+        CreateVipPlate,
+        CreatePlatepricing,
+        CreateFittingKit,
+        updateDeliveryDetails,
+        createadmin,
+        login
+} = require("./admin.controller");
 const router = require("express").Router();
 const { checkToken } = require("../../auth/token_validation");
 
 router.post("/",createadmin);
-
+router.post("/insertplateprice",CreatePlatepricing); 
+router.post("/insertfittingprice",CreateFittingKit); 
 router.post("/insertvipplate",CreateVipPlate); 
+router.post("/getfittingkit",getFittingKit); 
+router.post("/getplate",getPlate); 
 /*
 router.post("/updateparty",updateUserDetails);
 router.post("/updatedelivery",updateDeliveryDetails);
