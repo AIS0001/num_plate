@@ -1,4 +1,4 @@
-const { create,getPartyName,updateParty,deleteDelivery,deleteParty, getUserByuserEmail, updateDelivery } = require("./admin.service");
+const { create,getPartyName,updateParty,deleteDelivery,deleteParty, getUserByuserEmail, insertVipPlates } = require("./admin.service");
 const { genSaltSync,hashSync,compareSync } = require("bcrypt");
 const { sign } = require("jsonwebtoken");
 module.exports ={
@@ -24,6 +24,31 @@ module.exports ={
         }
         return res.status(200).json({
             // console.log(pool1Amount);
+             success:1,
+             status:200
+         });
+    })
+},
+CreateVipPlate:(req,res)=>{
+
+    const body =req.body;
+    const salt = genSaltSync(10);
+  // body.password=hashSync(body.password,salt);
+   insertVipPlates(body,(err,results)=>{
+        if(err)
+        {
+            console.log(err);
+         //    console.log(body);
+            return res.status(500).json({
+                status:500,
+                success:0,
+                message:"500 Internal Server Error"
+            })
+          
+        }
+        return res.status(200).json({
+            // console.log(pool1Amount);
+            status:200,
              success:1,
              status:200
          });

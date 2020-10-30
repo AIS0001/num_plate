@@ -21,6 +21,31 @@ module.exports = {
 
         );
     },
+//add vip plate data
+insertVipPlates:(data,callback)=>{
+    pool.query(
+        `INSERT INTO vip_plates ( title, plateno, price, description, flag) 
+        VALUES ( ?, ?, ?, ?, ?);`,
+    [
+        data.title,
+        data.plateno,
+        data.price,
+        data.description,
+        data.flag
+    ],
+    (error,results,fields)=>{
+        if(error)
+        {
+            return callback(error);
+        }
+        return callback(null,results);
+    }
+
+    );
+},
+    
+
+
     getPartyName:(callback)=>{
         pool.query(`SELECT * FROM party`,
         [],
