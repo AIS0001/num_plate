@@ -22,6 +22,7 @@ router.post("/insertfittingprice",CreateFittingKit);
 router.post("/insertvipplate",CreateVipPlate); 
 router.post("/getfittingkit",getFittingKit); 
 router.post("/getplate",getPlate); 
+
 /*
 router.post("/updateparty",updateUserDetails);
 router.post("/updatedelivery",updateDeliveryDetails);
