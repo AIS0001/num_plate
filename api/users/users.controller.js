@@ -1,4 +1,8 @@
-const { insert_user,getUsers,getUserByid,updateUser,deleteUser, getUserByuserEmail } = require("./users.service");
+const { insert_user,getUsers,
+    getUserByid,
+    updateUser,
+    getUserByuserEmail 
+        } = require("./users.service");
 const { genSaltSync,hashSync,compareSync } = require("bcrypt");
 const { sign } = require("jsonwebtoken");
 module.exports ={
@@ -96,29 +100,9 @@ module.exports ={
 
     },
 
-    deleteUser:(req,res)=>{
-       // const id = req.param.id;
-       const data = req.body;
-        deleteUser(data,(err,results)=>{
-            if(err)
-            {
-                console.log(err);
-                return;
-            }
-            if(!results)
-            {
-                return res.json({
-                    success:0,
-                    message:"Record not found"
-                });
-            }
-            return res.json({
-                success:1,
-                message:"Record deleted successfully"
-            })
-        });
+    
 
-    },
+  
 
     login:(req,res)=>{
         const body = req.body;

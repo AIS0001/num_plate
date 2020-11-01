@@ -80,18 +80,23 @@ module.exports = {
         }
         );
     },
-    deleteUser:(data,callback)=>{
-        pool.query(`delete from party where id=?`,
-        [data.id],
+    updateuserstat:(data,callback)=>{
+        pool.query(`update users set flag=? where id=?`,
+        [
+            data.flag,
+            data.id
+        ],
         (error,results,fields)=>{
             if(error)
             {
-              return  callback(error);
+              return  callack(error);
             }
             return callback(null,results);
         }
         );
     },
+  
+   
     getUserByuserEmail:(email,callack)=>{
         pool.query(
             `select * from party where email = ?`,

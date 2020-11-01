@@ -4,8 +4,12 @@ const { create,
        getPlateType,
        insertPlateType,
         updateParty,
+        deletePlatePricing,
+        deleteUser,
+        deletePlateType,
         insertFittingKit,
-        deleteParty,
+        updatePlatePricing,
+        delNumPlate,
         getUserByuserEmail, 
         insertPlatePricing,
         insertVipPlates
@@ -239,36 +243,10 @@ CreatePlateType:(req,res)=>{
             });
         });
     },
-
-    deletePartyRecord:(req,res)=>{
-       // const id = req.param.id;
-       const data = req.body;
-        deleteParty(data,(err,results)=>{
-            if(err)
-            {
-                console.log(err);
-                return;
-            }
-            if(!results)
-            {
-                return res.json({
-                    status:404,
-                    success:0,
-                    message:"Record not found"
-                });
-            }
-            return res.json({
-                status:200,
-                success:1,
-                message:"Record deleted successfully"
-            })
-        });
-
-    },
-    deleteDeliveryRecord:(req,res)=>{
+    deleteUserRecord:(req,res)=>{
         // const id = req.param.id;
         const data = req.body;
-         deleteDelivery(data,(err,results)=>{
+         deleteUser(data,(err,results)=>{
              if(err)
              {
                  console.log(err);
@@ -277,7 +255,7 @@ CreatePlateType:(req,res)=>{
              if(!results)
              {
                  return res.json({
-                     status:404,
+                    status:404,
                      success:0,
                      message:"Record not found"
                  });
@@ -290,7 +268,98 @@ CreatePlateType:(req,res)=>{
          });
  
      },
-
+     deleteplateType:(req,res)=>{
+         // const id = req.param.id;
+         const data = req.body;
+         deletePlateType(data,(err,results)=>{
+              if(err)
+              {
+                  console.log(err);
+                  return;
+              }
+              if(!results)
+              {
+                  return res.json({
+                    status:404,
+                      success:0,
+                      message:"Record not found"
+                  });
+              }
+              return res.json({
+                status:200,
+                  success:1,
+                  message:"Record deleted successfully"
+              })
+          });
+  
+      },
+      deleteplatePricing:(req,res)=>{
+         // const id = req.param.id;
+         const data = req.body;
+         deletePlatePricing(data,(err,results)=>{
+              if(err)
+              {
+                  console.log(err);
+                  return;
+              }
+              if(!results)
+              {
+                  return res.json({
+                    status:404,
+                      success:0,
+                      message:"Record not found"
+                  });
+              }
+              return res.json({
+                status:200,
+                  success:1,
+                  message:"Record deleted successfully"
+              })
+          });
+  
+      },
+      deleteNumPlate:(req,res)=>{
+        // const id = req.param.id;
+        const data = req.body;
+        delNumPlate(data,(err,results)=>{
+             if(err)
+             {
+                 console.log(err);
+                 return;
+             }
+             if(!results)
+             {
+                 return res.json({
+                   status:404,
+                     success:0,
+                     message:"Record not found"
+                 });
+             }
+             return res.json({
+               status:200,
+                 success:1,
+                 message:"Record deleted successfully"
+             })
+         });
+ 
+     },
+      updateplatePrice:(req,res)=>{
+        const body =req.body;
+        updatePlatePricing(body,(err,results)=>{
+            if(err)
+            {
+               console.log(err);
+               return;
+            }
+            return res.json({
+                status:200,
+               // message:results,
+                success:1,
+                data:"Plate price updated"
+            });
+        });
+    },
+    
     login:(req,res)=>{
         const body = req.body;
         getUserByuserEmail(body.userid,(err,results)=>{

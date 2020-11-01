@@ -196,9 +196,9 @@ insertPlateType:(data,callback)=>{
             return callback(null,results);
         });
     },
-    deleteParty:(data, callback)=>{
-        pool.query(`delete from party where id=?`,
-        [ data.id],
+    deleteUser:(data,callback)=>{
+        pool.query(`delete from users where id=?`,
+        [data.id],
         (error,results,fields)=>{
             if(error)
             {
@@ -208,13 +208,56 @@ insertPlateType:(data,callback)=>{
         }
         );
     },
-    deleteDelivery:(data, callback)=>{
-        pool.query(`delete from delivery where id=?`,
-        [ data.id],
+    deletePlateType:(data,callback)=>{
+        pool.query(`delete from plate_type where id=?`,
+        [data.id],
         (error,results,fields)=>{
             if(error)
             {
               return  callback(error);
+            }
+            return callback(null,results);
+        }
+        );
+    },
+
+    deletePlatePricing:(data,callback)=>{
+        pool.query(`delete from plate_pricing where id=?`,
+        [data.id],
+        (error,results,fields)=>{
+            if(error)
+            {
+              return  callback(error);
+            }
+            return callback(null,results);
+        }
+        );
+    },
+    delNumPlate:(data,callback)=>{
+        pool.query(`delete from number_plate where id=?`,
+        [data.id],
+        (error,results,fields)=>{
+            if(error)
+            {
+              return  callback(error);
+            }
+            return callback(null,results);
+        }
+        );
+    },
+
+    updatePlatePricing:(data,callback)=>{
+         pool.query(`update plate_pricing set name= ?, price= ?, type= ? where id= ?`,
+        [
+            data.name,
+            data.price,
+            data.type,
+            data.id
+        ],
+        (error,results,fields)=>{
+            if(error)
+            {
+              return  callack(error);
             }
             return callback(null,results);
         }
