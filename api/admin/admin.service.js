@@ -85,9 +85,10 @@ insertPlatePricing:(data,callback)=>{
 //Insert Plate Pricinf  Data
 insertPlateType:(data,callback)=>{
     pool.query(
-        `INSERT INTO plate_type (type) VALUES ( ?);`,
+        `INSERT INTO plate_type (type,price) VALUES ( ?, ?);`,
     [
-        data.type
+        data.type,
+        data.price
     ],
     (error,results,fields)=>{
         if(error)
