@@ -20,20 +20,21 @@ const { checkToken } = require("../../auth/token_validation");
 const { validate } = require("../../validation/form_validation");
 
 router.post("/",createadmin);
-router.post("/insertplateprice",checkToken,CreatePlatepricing); 
-router.post("/getplatetype",checkToken,getPlateTypeList); 
-router.post("/platetype",checkToken,CreatePlateType); 
-router.post("/insertfittingprice",checkToken,CreateFittingKit); 
-router.post("/insertvipplate",checkToken,CreateVipPlate); 
-router.post("/getfittingkit",checkToken,getFittingKit); 
-router.post("/getplate",checkToken,getPlate); 
-router.post("/updateuser",checkToken,updateUserDetails); 
+router.post("/insertplateprice",CreatePlatepricing); 
+router.post("/getplatetype",getPlateTypeList); 
+router.post("/platetype",CreatePlateType); 
+router.post("/insertfittingprice",CreateFittingKit); 
+router.post("/insertvipplate",CreateVipPlate); 
+router.post("/getfittingkit",getFittingKit); 
+router.post("/getplate",getPlate); 
+router.post("/updateuser",updateUserDetails); 
 
-router.post("/deleteuser",checkToken,deleteUserRecord); 
-router.post("/deleteplatetype",checkToken,deleteplateType); 
-router.post("/deleteplatepricing",checkToken,deleteplatePricing); 
-router.post("/deletenumplate",checkToken,deleteNumPlate); 
-router.post("/updateplateprice",checkToken,updateplatePrice); 
+router.post("/deleteuser",deleteUserRecord); 
+router.post("/deleteplatetype",deleteplateType); 
+router.post("/deleteplatepricing",deleteplatePricing); 
+router.post("/deletenumplate",deleteNumPlate); 
+router.post("/updateplateprice",updateplatePrice); 
+
 
 
 /*
