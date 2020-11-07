@@ -9,7 +9,7 @@ const { getFittingKit,
         deleteUserRecord,
          deleteplateType,
          deleteNumPlate,
-         
+         getSellPlate,
          updateplatePrice,
          deleteplatePricing,
         login,
@@ -28,6 +28,8 @@ router.post("/insertvipplate",CreateVipPlate);
 router.post("/getfittingkit",getFittingKit); 
 router.post("/getplate",getPlate); 
 router.post("/updateuser",updateUserDetails); 
+
+router.post("/sellplate",getSellPlate); 
 
 router.post("/deleteuser",deleteUserRecord); 
 router.post("/deleteplatetype",deleteplateType); 

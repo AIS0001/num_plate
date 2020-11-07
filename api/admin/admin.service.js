@@ -151,6 +151,20 @@ insertPlateType:(data,callback)=>{
         }
         );
     },
+    viewSellPlate:callback=>{
+        pool.query(`select * from sell order by id DESC`,
+        [
+
+        ],
+        (error,results,fields)=>{
+            if(error)
+            {
+              return  callback(error);
+            }
+            return callback(null,results);
+        }
+        );
+    },
 
     getUserByid:(id,callback)=>{
         pool.query(`select * from admin where id=?`,

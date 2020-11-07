@@ -10,6 +10,7 @@ const { create,
         insertFittingKit,
         updatePlatePricing,
         delNumPlate,
+        viewSellPlate,
         getUserByuserEmail, 
         insertPlatePricing,
         insertVipPlates
@@ -164,6 +165,32 @@ CreatePlateType:(req,res)=>{
                 });
             }
             return res.json({
+                success:1,
+                data:results 
+            });
+        });
+    },
+    getSellPlate:(req,res)=>{
+        const body =req.body;
+        viewSellPlate((err,results)=>{
+            if(err)
+            {
+                return res.json({
+                    status:500,
+                    success:0,
+                    message:"Record not found"
+                });
+            }
+            if(!results)
+            {
+                return res.json({
+                    status:401,
+                    success:0,
+                    message:"Record not found"
+                });
+            }
+            return res.json({
+                status:200,
                 success:1,
                 data:results 
             });
